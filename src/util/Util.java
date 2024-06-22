@@ -41,12 +41,12 @@ public interface Util {
 
 		return Integer.valueOf(lwString, 16).byteValue();
 
-	}
+	} 
 
 	public static String makePhoneNumber(String phoneNumber) {
 
 		String regEx = "(\\d{3})(\\d{3,4})(\\d{4})";
-
+ 
 		if (!Pattern.matches(regEx, phoneNumber))
 			return phoneNumber;
 

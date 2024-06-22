@@ -8,12 +8,12 @@ public class Main {
         System.out.println("Original String: " + originalString);
         System.out.println("Hexadecimal String: " + hexString);
         System.out.println("Converted back to String: " + Util.HexDecimalToString(hexString));
-
+ 
         // Test makePhoneNumber
         String phoneNumber = "1234567890";
         String formattedPhoneNumber = Util.makePhoneNumber(phoneNumber);
         System.out.println("Original Phone Number: " + phoneNumber);
-        System.out.println("Formatted Phone Number: " + formattedPhoneNumber);
+        System.out.println("Formatted Phone Number: " + formattedPhoneNumber); 
 
         // Test showMemory
         System.out.println("Memory Usage: " + Util.showMemory());
