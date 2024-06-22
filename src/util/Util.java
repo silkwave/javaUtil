@@ -3,6 +3,7 @@ package util;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 import java.util.regex.Pattern;
 
 public interface Util {
@@ -41,12 +42,12 @@ public interface Util {
 
 		return Integer.valueOf(lwString, 16).byteValue();
 
-	} 
+	}
 
 	public static String makePhoneNumber(String phoneNumber) {
 
 		String regEx = "(\\d{3})(\\d{3,4})(\\d{4})";
- 
+
 		if (!Pattern.matches(regEx, phoneNumber))
 			return phoneNumber;
 
@@ -116,6 +117,33 @@ public interface Util {
 
 		return LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd"));
 
+	}
+
+	public static String byteSubstr(String str, int byteStart, int byteEnd, String encoding) {
+
+		String result = null;
+		try {
+			byte[] bytes = str.getBytes(encoding);
+			printByteArrayInHex(bytes);
+			int actualStart = Math.max(0, Math.min(byteStart, bytes.length));
+			int actualEnd = Math.max(actualStart, Math.min(byteEnd, bytes.length));
+			byte[] truncatedBytes = Arrays.copyOfRange(bytes, actualStart, actualEnd);
+			printByteArrayInHex(truncatedBytes);
+			result = new String(truncatedBytes, encoding);
+
+		} catch (Exception e) {
+			throw new RuntimeException("문자열 오류");
+		}
+		return result;
+
+	}
+
+	public static void printByteArrayInHex(byte[] bytes) {
+		
+		for (byte b : bytes) {
+			System.out.print(String.format("0x%02X ", b));
+		}
+		System.out.println();
 	}
 
 }
