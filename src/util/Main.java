@@ -3,7 +3,6 @@ package util;
 public class Main {
     public static void main(String[] args) {
 
-        /** 테스트 */
         // Test StringToHexDecimal and HexDecimalToString
         String originalString = "Hello, World!";
         String hexString = Util.StringToHexDecimal(originalString);
