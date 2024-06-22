@@ -117,5 +117,5 @@ public interface Util {
 		return LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd"));
 
 	}
-   /** 테스트 */
+
 }
