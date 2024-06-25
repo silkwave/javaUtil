@@ -1,29 +1,46 @@
-import util.Main;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        System.out.println("Hello, World!");
+        // Create a Map
+        Map<String, Object> map = new HashMap<>();
+        Map<String, Object> data = new HashMap<>();        
 
-        System.out.println("Hello, World!");            
+        // Use put method to add key-value pairs to the map
+        map.put("A", Arrays.asList(1, 2, 3));
+        map.put("B", "Hello");
+        map.put("C", 123);
 
+        // Print initial values to verify
+        System.out.println("Initial values:");
+        map.forEach((key, value) -> {
+            System.out.println("Value for key '" + key + "': " + value);
+        });
 
-        // Main 클래스의 인스턴스 생성
-        Main mainInstance = new Main();
-        
-        // 클래스 이름 출력
-        System.out.println("클래스 이름: " + mainInstance.getClass().getName());
+        // Add more key-value pairs to the map
+        map.put("D", true);
+        map.put("E", Arrays.asList("Apple", "Banana", "Cherry"));
 
-        // 순수 클래스 이름 출력
-        System.out.println("클래스 이름: " + mainInstance.getClass().getSimpleName());  
-        
-        // 현재 실행 중인 스레드 가져오기
-        Thread currentThread = Thread.currentThread();
-        
-        // 스레드 이름 출력
-        System.out.println("현재 스레드 이름: " + currentThread.getName());       
-           
+        // Print updated values to verify
+        System.out.println("\nUpdated values:");
+        map.forEach((key, value) -> {
+            System.out.println("Value for key '" + key + "': " + value);
+        });
 
+        // Add the 'data' map to the 'map'
+        data.put("a1", "a1");
+        data.put("a2", 22);        
+        data.put("a3", Arrays.asList(1, 2, 3));      
+        map.put("data", data);
+
+        // Print the 'data' map using forEach
+        System.out.println("\nValue for key 'data': ");
+        @SuppressWarnings("unchecked")
+        Map<String, Object> dataMap = (Map<String, Object>) map.get("data");
+        dataMap.forEach((key, value) -> {
+            System.out.println("    " + key + ": " + value);
+        });
     }
-
-
 }
