@@ -1,0 +1,61 @@
+# Compiled class files and build output
+out/
+out21/
+bin/
+build/
+target/
+
+# Libraries (keep lib/ tracked if you manage jars in repo; ignore local-only libs)
+# If you want to track lib/, remove the next line. Currently we keep lib/ tracked.
+# lib/
+
+# IDE/editor directories
+.idea/
+.vscode/
+.project
+.classpath
+
+# Compiled class files and build output
+out/
+out21/
+bin/
+build/
+target/
+benchmark_temp/
+
+# Libraries (keep lib/ tracked if you manage jars in repo; ignore local-only libs)
+# If you want to track lib/, remove the next line. Currently we keep lib/ tracked.
+# lib/
+
+# IDE/editor directories
+.idea/
+.vscode/
+.project
+.classpath
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Logs and temp files
+*.log
+*.tmp
+
+# Shell history / local environment
+.env
+*.local
+
+# Generated archives
+*.jar
+*.war
+*.ear
+
+# Maven/Gradle wrapper and caches (if used)
+.gradle/
+/.mvn/
+
+# Annotation processor generated sources
+generated/
+
+# Misc
+push.sh

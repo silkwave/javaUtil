@@ -1,0 +1,124 @@
+package gsonHeaderBody;
+
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.gson.annotations.SerializedName;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+@Data
+@NoArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@ToString
+public class HeaderBodyDto {
+
+    // ------------------------
+    // Header
+    // ------------------------
+    @SerializedName("Header")
+    @JsonProperty("Header")
+    private HeaderDto header;
+
+    // ------------------------
+    // Body
+    // ------------------------
+    @SerializedName("Body")
+    @JsonProperty("Body")
+    private BodyDto body;
+
+    // ------------------------
+    // Header DTO
+    // ------------------------
+    @Data
+    @NoArgsConstructor
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    public static class HeaderDto {
+        @SerializedName("requestIdS")
+        @JsonProperty("requestIdJ")
+        @JsonAlias("requestIdS")        
+        private String requestId;
+
+        @SerializedName("sourceS")
+        @JsonProperty("sourceJ")
+        @JsonAlias("sourceS")            
+        private String source;
+
+        @SerializedName("timestampS")
+        @JsonProperty("timestampJ")
+        @JsonAlias("timestampS")            
+        private Long timestamp;
+    }
+
+    // ------------------------
+    // Body DTO (UserDto와 동일)
+    // ------------------------
+    @Data
+    @NoArgsConstructor
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    public static class BodyDto {
+        @SerializedName("idS")
+        @JsonProperty("idJ")
+        @JsonAlias("idS")
+        private String id;
+
+        @SerializedName("nameS")
+        @JsonProperty("nameJ")
+        @JsonAlias("nameS")
+        private String name;
+
+        @SerializedName("ageS")
+        @JsonProperty("ageJ")
+        @JsonAlias("ageS")
+        private Integer age;
+
+        @SerializedName("addressS")
+        @JsonProperty("addressJ")
+        @JsonAlias("addressS")
+        private List<AddressDto> address; // 배열로 변경
+
+        @SerializedName("profileS")
+        @JsonProperty("profileJ")
+        @JsonAlias("profileS")
+        private ProfileDto profile;
+    }
+
+    @Data
+    @NoArgsConstructor
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    public static class AddressDto {
+        @SerializedName("streetS")
+        @JsonProperty("streetJ")
+        @JsonAlias("streetS")
+        private String street;
+
+        @SerializedName("cityS")
+        @JsonProperty("cityJ")
+        @JsonAlias("cityS")
+        private String city;
+
+        @SerializedName("zipS")
+        @JsonProperty("zipJ")
+        @JsonAlias("zipS")
+        private String zip;
+    }
+
+    @Data
+    @NoArgsConstructor
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    public static class ProfileDto {
+        @SerializedName("emailS")
+        @JsonProperty("emailJ")
+        @JsonAlias("emailS")
+        private String email;
+
+        @SerializedName("phoneS")
+        @JsonProperty("phoneJ")
+        @JsonAlias("phoneS")
+        private String phone;
+    }
+
+}
