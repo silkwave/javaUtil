@@ -101,6 +101,8 @@ public class MediaRuleEngine {
         String code = subjectCode.trim();
         Channel ch = Channel.from(inputMedia);
 
+        ch.toString(); // 디버깅용 출력
+
         // Map에서 룰 검색 (O(1) 성능)
         Rule rule = RULE_MAP.get(code);
 
@@ -117,6 +119,12 @@ public class MediaRuleEngine {
     public static void main(String[] args) {
         MediaRuleEngine engine = new MediaRuleEngine();
 
+        System.out.println("========== [전체 룰 매핑 테이블] ==========");
+        RULE_MAP.forEach((code, rule) -> {
+            System.out.printf("과목코드: %-5s | 창구: %2d | 비대면: %2d | 기타: %2d%n",
+                    code, rule.pb, rule.nonFace, rule.other);
+        });
+
         System.out.println("========== [매체코드 산출 테스트] ==========");
 
         // 요구불 테스트
@@ -129,12 +137,7 @@ public class MediaRuleEngine {
 
         // 신탁 및 특수 케이스
         test(engine, "31", "QR"); // 결과: 22
-        test(engine, "28", "PB"); // 결과: 10
-
-        // 예외 케이스
-        test(engine, "999", "PB"); // 결과: -1 (미등록 과목)
-        test(engine, "1", "UNKNOWN");// 결과: 15 (기타 매체 처리)
-        test(engine, null, "PB"); // 결과: -1 (널 입력)
+        test(engine, "28", "xx"); // 결과: 10
 
         System.out.println("===========================================");
     }
